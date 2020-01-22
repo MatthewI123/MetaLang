@@ -52,7 +52,7 @@ int main()
 			switch (current) {
 				case '=': kind = "operator_assign"; break;
 				case '+': kind = "operator_add"; break;
-				case '-': kind = "operator_minus"; break;
+				case '-': kind = "operator_subtract"; break;
 				case '*': kind = "operator_multiply"; break;
 				case '/': kind = "operator_divide"; break;
 				case '%': kind = "operator_modulo"; break;

@@ -12,12 +12,13 @@ namespace compiler::token
 	{
 		enum class token_kind
 		{
+			end_of_source,
 			keyword_let,
 			operator_assign,
-			operator_add, operator_minus,
+			operator_add, operator_subtract,
 			operator_multiply, operator_divide, operator_modulo,
 			symbol_left_parenthesis, symbol_right_parenthesis,
-			identifier, integer, end_of_source
+			identifier, integer
 		};
 	}
 

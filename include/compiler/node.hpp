@@ -8,6 +8,7 @@ namespace compiler::node
 	{
 		enum class node_kind
 		{
+			program, variable_definition,
 			additive_expression, multiplicative_expression, unary_expression,
 			identifier, integer
 		};
@@ -15,13 +16,31 @@ namespace compiler::node
 		enum class additive_mode { addition, subtraction };
 		enum class multiplicative_mode { multiplication, division, modulo };
 		enum class unary_mode { negation };
+	}
+
+	template<typename Statements>
+	struct program
+	{
+		static constexpr auto kind = decorator::node_kind::program;
+		using statements = Statements;
+
+		template<typename Statement>
+		using add_statement = program<typename Statements::template push_back<Statement>>;
+	};
+
+	template<typename Identifier, typename Operand>
+	struct variable_definition
+	{
+		static constexpr auto kind = decorator::node_kind::variable_definition;
+		using identifier = Identifier;
+		using operand = Operand;
 	};
 
 	template<decorator::additive_mode Mode, typename Left, typename Right>
 	struct additive_expression
 	{
 		static constexpr auto kind = decorator::node_kind::additive_expression;
-		using mode = Mode;
+		static constexpr auto mode = Mode;
 		using left = Left;
 		using right = Right;
 	};
@@ -30,7 +49,7 @@ namespace compiler::node
 	struct multiplicative_expression
 	{
 		static constexpr auto kind = decorator::node_kind::multiplicative_expression;
-		using mode = Mode;
+		static constexpr auto mode = Mode;
 		using left = Left;
 		using right = Right;
 	};
@@ -39,23 +58,23 @@ namespace compiler::node
 	struct unary_expression
 	{
 		static constexpr auto kind = decorator::node_kind::unary_expression;
-		using mode = Mode;
+		static constexpr auto mode = Mode;
 		using operand = Operand;
 	};
 
-	template<const char* const Value, typename Token>
+	template<typename Token>
 	struct identifier
 	{
 		using token = Token;
 		static constexpr auto kind = decorator::node_kind::identifier;
-		static constexpr auto value = Value;
+		static constexpr auto value = Token::Value;
 	};
 
-	template<word_t Value, typename Token>
+	template<typename Token>
 	struct integer
 	{
 		using token = Token;
 		static constexpr auto kind = decorator::node_kind::integer;
-		static constexpr auto value = Value;
+		static constexpr auto value = Token::Value;
 	};
 }
