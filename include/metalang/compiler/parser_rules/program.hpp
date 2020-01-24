@@ -22,7 +22,6 @@ namespace compiler::parser_rules
 		using type = make_program<Parser, Node, int>;
 	};
 
-
 	template<typename Parser, typename Node>
 	struct make_program<Parser, Node, std::enable_if_t<!Parser::done>>
 	{

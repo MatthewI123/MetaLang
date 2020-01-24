@@ -57,7 +57,7 @@ namespace compiler::token
 	template<size_t Position, size_t Line, size_t Column, word_t Integer>
 	struct make_token<decorator::token_kind::integer, Position, Line, Column, word_t, Integer>
 	{
-		using type = token<decorator::token_kind::identifier, Position, Line, Column, word_t, Integer>;
+		using type = token<decorator::token_kind::integer, Position, Line, Column, word_t, Integer>;
 	};
 
 	template<decorator::token_kind Kind, size_t Position, size_t Line, size_t Column, auto Literal = void_t()>

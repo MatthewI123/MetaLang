@@ -65,7 +65,7 @@ namespace compiler::node
 	{
 		using token = Token;
 		static constexpr auto kind = decorator::node_kind::identifier;
-		static constexpr auto value = Token::Value;
+		static constexpr auto value = Token::value;
 	};
 
 	template<typename Token>
@@ -73,6 +73,6 @@ namespace compiler::node
 	{
 		using token = Token;
 		static constexpr auto kind = decorator::node_kind::integer;
-		static constexpr auto value = Token::Value;
+		static constexpr auto value = Token::value;
 	};
 }

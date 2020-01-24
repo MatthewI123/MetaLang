@@ -25,5 +25,8 @@ namespace compiler
 
 		template<token::decorator::token_kind Kind>
 		using expect = std::conditional_t<test<Kind>, next, parser_error_expected<parser_type, Kind>>;
+
+		template<token::decorator::token_kind Kind = current::kind>
+		using unexpected = parser_error_unexpected<parser_type, Kind>;
 	};
 }
