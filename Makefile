@@ -1,27 +1,27 @@
-.PHONY: all clean tokens parser
+.PHONY: all clean
+.PHONY: tools clean_tools
+.PHONY: tests clean_tests
 
-CXX := g++ --std=c++17 -Iinclude/ -Wall -Wextra -Wpedantic -O3
+export INCLUDE := $(CURDIR)/include
+export TOOLS := $(CURDIR)/tools
+export CXX := g++ --std=c++17 -I$(INCLUDE)/ -Wall -Wextra -Wpedantic -Wfatal-errors -O3
 
-all:
-	$(CXX) tests/test.cpp -o test.out
+all: tools tests
 
-clean:
-	rm -f build/*
-	rm -f test.out
+clean: clean_tools clean_tests
 
-tokens: build/tokens.hpp
-	# build/tokens.hpp
-	# build/lexemes.cpp
-	# build/lexemes.hpp
-	@echo === Token Generation Completed ===
+tools:
+	# === BUILD: tools === #
+	$(MAKE) -C tools/ all
 
-parser: tokens build/parser.out
-	@echo === Parser Generation Completed ===
+clean_tools:
+	# === CLEAN: tools === #
+	$(MAKE) -C tools/ clean
 
-build/tokens.hpp: src/generate_tokens/main.cpp src/generate_tokens/source.hpp src/generate_tokens/target.hpp source.metalang
-	mkdir -p build/
-	$(CXX) $< -o build/generate_tokens.out
-	cd build && ./generate_tokens.out
+tests: tools
+	# === BUILD: tests === #
+	$(MAKE) -C tests/ all
 
-build/parser.out: src/generate_parser.cpp include/compiler/parser.hpp
-	$(CXX) -I build/ $< -o $@
+clean_tests:
+	# === CLEAN: tests === #
+	$(MAKE) -C tests/ clean

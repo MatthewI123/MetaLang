@@ -1,7 +1,5 @@
 #pragma once
 
-#include "types.hpp"
-
 namespace compiler::node
 {
 	namespace decorator
@@ -14,7 +12,7 @@ namespace compiler::node
 		};
 
 		enum class additive_mode { addition, subtraction };
-		enum class multiplicative_mode { multiplication, division, modulo };
+		enum class multiplicative_mode { multiply, divide, modulo };
 		enum class unary_mode { negation };
 	}
 

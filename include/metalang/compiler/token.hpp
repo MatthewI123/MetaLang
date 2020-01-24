@@ -1,12 +1,13 @@
 #pragma once
 
-#include "types.hpp"
+#include "../types.hpp"
 
 namespace compiler::token
 {
 	using void_t = std::nullptr_t;
-	using word_t = ::word_t;
 	using lexeme_t = const char*;
+	using ::word_t;
+	using ::size_t;
 
 	namespace decorator
 	{

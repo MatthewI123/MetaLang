@@ -1,13 +1,18 @@
 #include <iostream>
+#include <metalang/types.hpp>
 #include "source.hpp"
 #include "target.hpp"
-#include "types.hpp"
 
-int main()
+int main(int argc, char** argv)
 {
-	// current directory: build/
-	source input("../source.metalang");
-	target output("source.metalang");
+	if (argc < 2) {
+		std::cout << "usage: generate_tokens <file>\n";
+		std::cout << "  Generates tokens.hpp, lexemes.hpp, lexemes.cpp in current directory.\n";
+		return 1;
+	}
+
+	source input(argv[1]);
+	target output(argv[1]);
 
 	while (true) {
 		auto [position, line, column] = input.here();

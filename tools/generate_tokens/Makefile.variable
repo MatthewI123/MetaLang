@@ -1,0 +1,2 @@
+DEPENDENCIES := generated_tokens.hpp generated_lexemes.hpp generated_lexemes.cpp
+SOURCE_DEPENDENCIES := generated_lexemes.cpp

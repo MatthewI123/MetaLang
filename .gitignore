@@ -1,2 +1,9 @@
-test.out
-build/*
+.a
+.o
+.out
+.so
+
+# See tools/generate_tokens/Makefile.variable
+generated_tokens.hpp
+generated_lexemes.hpp
+generated_lexemes.cpp
