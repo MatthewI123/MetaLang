@@ -16,15 +16,13 @@ int main(int argc, char** argv)
 
 	while (true) {
 		auto [position, line, column] = input.here();
-		char current = input.get();
+		char current = input.peek();
 
 		if (std::isalpha(current) || current == '_') { // identifier
 			std::string lexeme;
 
-			while (std::isalpha(current) || std::isdigit(current) || current == '_') {
-				lexeme += current;
-				current = input.get();
-			}
+			while (std::isalpha(input.peek()) || std::isdigit(input.peek()) || input.peek() == '_')
+				lexeme += input.get();
 
 			if (lexeme == "let")
 				output.add_symbol("keyword_let", position, line, column);
@@ -34,10 +32,8 @@ int main(int argc, char** argv)
 			std::string lexeme;
 			unsigned long long value;
 
-			while (std::isdigit(current)) {
-				lexeme += current;
-				current = input.get();
-			}
+			while (std::isdigit(input.peek()))
+				lexeme += input.get();
 
 			try {
 				value = std::stoull(lexeme);
@@ -50,6 +46,7 @@ int main(int argc, char** argv)
 				input.error("unknown error trying to parse integer", position, line, column);
 			}
 		} else if (current == ' ' || current == '\n') {
+			input.get();
 			continue;
 		} else if (current != std::ifstream::traits_type::eof()) {
 			std::string kind;
@@ -68,6 +65,7 @@ int main(int argc, char** argv)
 					break;
 			}
 
+			input.get();
 			output.add_symbol(kind, position, line, column);
 		} else {
 			break;

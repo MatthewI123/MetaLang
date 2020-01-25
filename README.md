@@ -19,8 +19,7 @@ It is inconvinient to manually create the list of tokens, so a program will toke
 
 ## To-do
 
-1. Complete the parser
-2. Extend the language.
-3. Create the interpreter.
-4. Write more documentation.
-5. Write more tests.
+1. Extend the language.
+2. Create the interpreter.
+3. Write more documentation.
+4. Write more tests.

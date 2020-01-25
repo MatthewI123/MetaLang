@@ -28,7 +28,7 @@ namespace compiler::parser_rules
 	};
 
 	template<typename Parser>
-	struct make_statement<Parser, std::enable_if_t<Parser::template test<token::decorator::token_kind::keyword_let>>>
+	struct make_statement<Parser, std::enable_if_t<Parser::current::kind == token::decorator::token_kind::keyword_let>>
 	{
 		using type = make_variable_definition<Parser>;
 	};

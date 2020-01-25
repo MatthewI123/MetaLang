@@ -14,5 +14,5 @@ $(DEPENDENCIES): source.metalang $(GENERATE_TOKENS_INCLUDES)
 	# ====== BUILD: dependencies ====== #
 	$(TOOLS)/generate_tokens/generate_tokens.out source.metalang
 
-tests.out: main.cpp $(INCLUDES)
+tests.out: main.cpp $(DEPENDENCIES) $(INCLUDES)
 	$(CXX) $< $(SOURCE_DEPENDENCIES) -o $@
