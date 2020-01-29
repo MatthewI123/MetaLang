@@ -1,9 +1,6 @@
 #pragma once
 
-#include <cstddef>
-#include <cstdint>
-#include "type_list.hpp"
-#include "value_list.hpp"
+#include "type_list.hpp" // for type_list
+#include "value_list.hpp" // for value_list
 
-using word_t = std::uint16_t;
-using size_t = std::size_t;
+using word_t = unsigned short; // Word type for the MetaLang abstract machine.
