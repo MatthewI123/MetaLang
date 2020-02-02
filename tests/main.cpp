@@ -24,6 +24,12 @@ void traverse(std::size_t depth)
 
 		traverse<typename Node::identifier>(depth + 1);
 		traverse<typename Node::operand>(depth + 1);
+	} else if constexpr (Node::kind == node::decorator::node_kind::function_definition) {
+		std::cout << prefix << "function_definition\n";
+
+		traverse<typename Node::identifier>(depth + 1);
+		// parameters
+		traverse<typename Node::operand>(depth + 1);
 	} else if constexpr (Node::kind == node::decorator::node_kind::additive_expression) {
 		std::cout << prefix << "additive_expression ";
 		

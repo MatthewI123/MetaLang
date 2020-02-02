@@ -58,6 +58,7 @@ int main(int argc, char** argv)
 				case '*': kind = "operator_multiply"; break;
 				case '/': kind = "operator_divide"; break;
 				case '%': kind = "operator_modulo"; break;
+				case ',': kind = "symbol_delimiter"; break;
 				case '(': kind = "symbol_left_parenthesis"; break;
 				case ')': kind = "symbol_right_parenthesis"; break;
 				default:

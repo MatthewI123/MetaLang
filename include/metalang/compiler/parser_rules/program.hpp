@@ -8,7 +8,6 @@
 
 namespace compiler::parser_rules
 {
-	// base case (no more statements)
 	template<typename Parser, typename Node>
 	struct make_program
 	{

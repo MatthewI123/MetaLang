@@ -18,6 +18,7 @@ namespace compiler::token
 			operator_assign,
 			operator_add, operator_subtract,
 			operator_multiply, operator_divide, operator_modulo,
+			symbol_delimiter,
 			symbol_left_parenthesis, symbol_right_parenthesis,
 			identifier, integer
 		};

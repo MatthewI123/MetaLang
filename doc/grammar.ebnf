@@ -1,8 +1,12 @@
-program = { statement };
+program = [ chunk ];
 
-statement = variable_definition;
+chunk := { statement };
+
+statement = variable_definition | function_definition;
 
 variable_definition = 'let' identifier '=' expression;
+
+function_definition = 'let' identifier '(' [ identifier { ',' identifier } ] ')' '=' expression;
 
 expression = additive_expression;
 
@@ -12,7 +16,9 @@ multiplicative_expression = [ multiplicative_expression ('*' | '/' | '%') ] unar
 
 unary_expression = [ '-' ] primary_expression;
 
-primary_expression = identifier | integer | '(' expression ')';
+primary_expression = identifier | integer | '(' expression ')' | call_expression;
+
+call_expression = identifier '(' [ expression { ',' expression } ] ')';
 
 identifier = (* Implementation Defined *)
 

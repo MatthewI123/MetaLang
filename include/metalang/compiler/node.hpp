@@ -6,7 +6,7 @@ namespace compiler::node
 	{
 		enum class node_kind
 		{
-			program, variable_definition,
+			program, variable_definition, function_definition,
 			additive_expression, multiplicative_expression, unary_expression,
 			identifier, integer
 		};
@@ -32,6 +32,19 @@ namespace compiler::node
 		static constexpr auto kind = decorator::node_kind::variable_definition;
 		using identifier = Identifier;
 		using operand = Operand;
+	};
+
+	template<typename Identifier, typename Parameters, typename Operand>
+	struct function_definition
+	{
+		static constexpr auto kind = decorator::node_kind::function_definition;
+		using identifier = Identifier;
+		using parameters = Parameters;
+		using operand = Operand;
+
+		template<typename Parameter>
+		using add_parameter = function_definition<Identifier, typename Parameters::template push_back<Parameter>,
+			Operand>;
 	};
 
 	template<decorator::additive_mode Mode, typename Left, typename Right>

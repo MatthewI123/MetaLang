@@ -2,3 +2,6 @@ let a = 5
 let b = 10
 let c = (a + b) * 10 % (b - a)
 let d = a + b - c * d / c
+let f() = x
+let g(x) = x
+let h(x, y) = x - y
