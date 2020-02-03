@@ -11,7 +11,7 @@ clean:
 	rm -f tests.out $(DEPENDENCIES)
 
 $(DEPENDENCIES): source.metalang $(GENERATE_TOKENS_INCLUDES)
-	# ====== BUILD: dependencies ====== #
+	# ====== BUILD: tokens ====== #
 	$(TOOLS)/generate_tokens/generate_tokens.out source.metalang
 
 tests.out: main.cpp $(DEPENDENCIES) $(INCLUDES)
